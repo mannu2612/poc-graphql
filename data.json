@@ -1,5 +1,4 @@
-{
-  "1": {
+[ {
     "id": "1",
     "name": "Eduardo",
     "lastName": "Rost",
@@ -9,7 +8,7 @@
       "number":"123"
     }]
   },
-  "2": {
+  {
     "id": "2",
     "name": "Renan",
     "lastName": "Santos",
@@ -18,29 +17,29 @@
       "street":"rua alfredo",
       "number":"456"
     },{
-      "id":"5",
+      "id":"3",
       "street":"rua melo",
       "number":"543"
     }]
   },
-  "3": {
+  {
     "id": "3",
     "name": "Fabiano",
     "lastName": "Menegussi",
     "adresses": [{
-      "id":"3",
+      "id":"4",
       "street":"rua afonso",
       "number":"789"
     }]
   },
-  "4": {
+  {
     "id": "4",
     "name": "Andre",
     "lastName": "Junges",
     "adresses": [{
-      "id":"1",
+      "id":"5",
       "street":"rua cabral",
       "number":"0"
     }]
   }
-}
+]
