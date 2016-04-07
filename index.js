@@ -2,21 +2,27 @@ var graphql = require('graphql');
 var graphqlHTTP = require('express-graphql');
 var express = require('express');
 
-// Import our data set from above
 var data = require('./data.json');
 
-// Define our user type, with two string fields; `id` and `name`
-var userType = new graphql.GraphQLObjectType({
-  name: 'User',
+var adressType = new graphql.GraphQLObjectType({
+  name: 'Adress',
   fields: {
-    id: { type: graphql.GraphQLString },
-    name: { type: graphql.GraphQLString },
-    lastName: { type: graphql.GraphQLString }
+    id: { type: graphql.GraphQLInt },
+    street: { type: graphql.GraphQLString },
+    number: { type: graphql.GraphQLInt }
   }
 });
 
-// Define our schema, with one top level field, named `user`, that
-// takes an `id` argument and returns the User with that ID.
+var userType = new graphql.GraphQLObjectType({
+  name: 'User',
+  fields: () => ({
+    id: { type: graphql.GraphQLInt },
+    name: { type: graphql.GraphQLString },
+    lastName: { type: graphql.GraphQLString },
+    adresses: { type: new graphql.GraphQLList(adressType) }
+  })
+});
+
 var schema = new graphql.GraphQLSchema({
   query: new graphql.GraphQLObjectType({
     name: 'Query',
