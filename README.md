@@ -1,4 +1,4 @@
-Exemplo desenvolvido para apresentação sobre GRAPHQL 
+
 
 ##Installation
 
