@@ -1,45 +1,63 @@
 [ {
-    "id": "1",
-    "name": "Eduardo",
-    "lastName": "Rost",
-    "adresses": [{
-      "id":"1",
-      "street":"rua bento",
-      "number":"123"
+    "id": 1,
+    "list_price": 100000,
+    "advertiserTypes": [{
+      "id":1,
+      "email":"abc@gmail.com",
+      "address":{
+        "city":"SBC",
+        "state":"KA",
+        "postal_code":234432,
+        "country":"India"
+      },
+      "broker":{
+        "accent_color":"abc",
+        "designations":"A1",
+        "fulfillment_id":1112,
+        "name":"Tom",
+        "logo":"http://abcd.png"
+      },
+      "name":"Timon"
     }]
   },
   {
-    "id": "2",
-    "name": "Renan",
-    "lastName": "Santos",
-    "adresses": [{
-      "id":"2",
-      "street":"rua alfredo",
-      "number":"456"
-    },{
-      "id":"3",
-      "street":"rua melo",
-      "number":"543"
-    }]
-  },
-  {
-    "id": "3",
-    "name": "Fabiano",
-    "lastName": "Menegussi",
-    "adresses": [{
-      "id":"4",
-      "street":"rua afonso",
-      "number":"789"
-    }]
-  },
-  {
-    "id": "4",
-    "name": "Andre",
-    "lastName": "Junges",
-    "adresses": [{
-      "id":"5",
-      "street":"rua cabral",
-      "number":"0"
+    "id": 2,
+    "list_price": 200000,
+    "advertiserTypes": [{
+      "id":1,
+      "email":"xyz@gmail.com",
+      "address":{
+        "city":"SBC",
+        "state":"KA",
+        "postal_code":212343,
+        "country":"India"
+      },
+      "broker":{
+        "accent_color":"abc",
+        "designations":"A1",
+        "fulfillment_id":1112,
+        "name":"Tom",
+        "logo":"http://abcd.png"
+      },
+      "name":"Timon"
+    },
+    {
+      "id":2,
+      "email":"xyz@zgmail.com",
+      "address":{
+        "city":"SBC",
+        "state":"KA",
+        "postal_code":212343,
+        "country":"India"
+      },
+      "broker":{
+        "accent_color":"abc",
+        "designations":"A1",
+        "fulfillment_id":1112,
+        "name":"Pom",
+        "logo":"http://abcd.png"
+      },
+      "name":"Pumba"
     }]
   }
 ]

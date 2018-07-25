@@ -2,44 +2,68 @@ var graphql = require('graphql');
 var graphqlHTTP = require('express-graphql');
 var express = require('express');
 
-var data = require('./data.json');
+var data = require('./data.json'); 
 
-var adressType = new graphql.GraphQLObjectType({
-  name: 'Adress',
+var addressType = new graphql.GraphQLObjectType({
+  name: 'Address',
   fields: {
     id: { type: graphql.GraphQLInt },
-    street: { type: graphql.GraphQLString },
-    number: { type: graphql.GraphQLInt }
+    city: { type: graphql.GraphQLString },
+    country: { type: graphql.GraphQLString },
+    state: { type: graphql.GraphQLString },
+    postal_code: { type: graphql.GraphQLInt },
   }
 });
 
-var userType = new graphql.GraphQLObjectType({
-  name: 'User',
-  fields: () => ({
-    id: { type: graphql.GraphQLInt },
+var brokerType = new graphql.GraphQLObjectType({
+  name: 'Broker',
+  fields: {
+    accent_color: { type: graphql.GraphQLString },
+    designations: { type: graphql.GraphQLString },
+    fulfillment_id: { type: graphql.GraphQLInt },
     name: { type: graphql.GraphQLString },
-    lastName: { type: graphql.GraphQLString },
-    adresses: { type: new graphql.GraphQLList(adressType) }
-  })
+    logo: { type: graphql.GraphQLString },
+  }
+});
+var advertiserType = new graphql.GraphQLObjectType({
+  name: 'Advertiser',
+  fields: {
+    id: { type: graphql.GraphQLInt },
+    email: { type: graphql.GraphQLString },
+    address: { type: addressType },
+    broker: { type: brokerType },
+    name: { type: graphql.GraphQLString },
+  }
 });
 
+var resultType = new graphql.GraphQLObjectType({
+  name: 'Results',
+  fields: {
+    id: { type: graphql.GraphQLInt },
+    advertiserTypes: { type: new graphql.GraphQLList(advertiserType) },
+    list_price :{ type: graphql.GraphQLInt }
+  }
+});
 
 var schema = new graphql.GraphQLSchema({
   query: new graphql.GraphQLObjectType({
     name: 'Query',
     fields: {
-      user: {
-        type: userType,
+      result: {
+        type: resultType,
         args: {
           id: { type: new graphql.GraphQLNonNull(graphql.GraphQLInt) }
         },
         resolve: function (_, args) {
-          if(args.id > 0 || args.id < data.length)
-            return data[args.id - 1];
+          data.forEach((result) =>{
+            if(result.id == args.id){
+              return result;
+            }
+          })
         }
       },
-      users: {
-        type: new graphql.GraphQLList(userType),
+      results: {
+        type: new graphql.GraphQLList(resultType),
         args: {
           qtd: { type: graphql.GraphQLInt },
           street: { type: graphql.GraphQLString }
